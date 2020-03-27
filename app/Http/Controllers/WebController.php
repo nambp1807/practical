@@ -18,22 +18,23 @@ class WebController extends Controller
 
     public function userStore(Request $request){
         $request->validate([
-            "name"=>"required|string|unique:name",
-            "age"=> "required|Integer",
-            "address"=> "required|string",
-            "telephone"=> "required|string"]);
-
-        try{
+            "name" => "required|string",
+            "age" => "required|numeric",
+            "address" => "required|string",
+            "telephone" => "required|string"
+        ]);
+        try {
             User::create([
-                "name"=> $request->get("name"),
-                "age"=> $request->get("email"),
-                "address"=> $request->get("password"),
-                "telephone"=> $request->get("password"),
+                "name" => $request->get("name"),
+                "age" => $request->get("age"),
+                "address" => $request->get("address"),
+                "telephone" => $request->get("telephone")
             ]);
-        }catch(\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back();
         }
-        return redirect()->to("user");
+
+        return redirect()->to("/");
     }
 
 }
