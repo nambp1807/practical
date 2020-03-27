@@ -2,9 +2,9 @@
 @section("top_content")
     <div class="col-md-12">
         <div class="overview-wrap">
-            <h2 class="title-1">List User</h2>
+            <h2 class="title-1">List Student</h2>
             <a class="au-btn au-btn-icon au-btn--blue" href="{{url('user/create')}}">
-                <i class="zmdi zmdi-plus"></i>Add User</a>
+                <i class="zmdi zmdi-plus"></i>Add Student</a>
         </div>
     </div>
 @endsection
@@ -35,7 +35,7 @@
                 </tr>
                 <tr class="spacer"></tr>
             @empty
-                <p>Không có người dùng nào</p>
+                <p>Không có sinh viên nào nào</p>
             @endforelse
             </tbody>
         </table>

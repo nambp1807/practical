@@ -2,14 +2,14 @@
 @section("top_content")
     <div class="col-md-12">
         <div class="overview-wrap">
-            <h2 class="title-1">Thêm người dùng</h2>
+            <h2 class="title-1">Thêm Student</h2>
         </div>
     </div>
 @endsection
 @section('main_content')
     <div class="col-lg-6">
         <div class="card">
-            <div class="card-header">Thêm người dùng</div>
+            <div class="card-header">Thêm Student</div>
             <div class="card-body">
                 <form action="{{url("user/store")}}" method="post">
                     @csrf
