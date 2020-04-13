@@ -6,7 +6,9 @@
 
 <div class="container col-lg-6">
     <h1>Form Student</h1>
-<form action="#" method="post">
+    <h2 id="notification"></h2>
+
+    <form action="{{url('/postFeedback')}}" method="post" id="feedback">
     @csrf
     <div class="modal-body">
         <div class="form-group">
@@ -21,31 +23,34 @@
             <label>Telephone</label>
             <input type="tel" name="telephone" class="form-control" placeholder="telephone"/>
         </div>
+        <div class="form-group">
+            <label for="feedback">Example textarea</label>
+            <textarea class="form-control" id="feedback" name="feedback" rows="3"></textarea>
+        </div>
     </div>
     <div class="modal-footer">
         <button id="submitBtn" type="button" class="btn btn-primary">Submit</button>
     </div>
 </form>
 </div>
+
+    <script src="{{ asset("js/jquery.js") }}"></script>
 <script type="text/javascript">
-    $("#submitBtn").bind("click",function () {
-        $.ajax({
-            url: "{{url("postLogin")}}",
-            method: "POST",
-            data: {
-                _token: $("input[name=_token]").val(),
-                email: $("input[name=email]").val(),
-                password: $("input[name=password]").val(),
-            },
-            success: function (res) {
-                if(res.status){
-                    location.reload();
-                }else{
-                    alert(res.message);
+    $(document).ready(function () {
+        $('#feedback').submit((e) => {
+            e.preventDefault();
+            $.ajax({
+                type:"POST",
+                url: $("#feedback").attr("action"),
+                data: $("#feedback").serialize(),
+                dataType: "json",
+                success: (res) => {
+                    $("#notification").html(res.message);
                 }
-            }
+            });
         });
     });
 </script>
+
 </body>
 </html>

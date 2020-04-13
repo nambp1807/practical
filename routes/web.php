@@ -13,3 +13,4 @@
 
 
 Route::get('/',"WebController@form");
+Route::post('/postFeedback', 'WebController@postFeedback');
