@@ -12,6 +12,4 @@
 */
 
 
-Route::get('/',"WebController@user");
-Route::get('user/create',"WebController@userCreate");
-Route::post('user/store',"WebController@userStore");
+Route::get('/',"WebController@form");
