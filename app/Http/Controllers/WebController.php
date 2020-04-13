@@ -14,6 +14,17 @@ class WebController extends Controller
     }
 
     public function postFeedback(Request $request){
+        $request->validate([
+            'name' => 'required|max:191',
+            'email' => 'required|max:191',
+            'telephone' => 'required|max:10',
+            'feedback' => 'required'
+        ], [
+            'name.required' => 'Student name is required.',
+            'email.required' => 'Student email is required.',
+            'telephone.required' => 'Student telephone is required.',
+            'feedback.required' => 'Feedback is required'
+        ]);
         try {
             $feedback = Student::create([
                 "name" => $request->get("name"),
